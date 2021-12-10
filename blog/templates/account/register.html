@@ -1,0 +1,124 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	{% block head %}
+	<head>
+		<meta charset="utf-8">
+		<title>alpha immobilier | compte</title>
+		<link rel="shortcut icon" href="{% static 'themes/images/panier.jpg' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">      
+		<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		
+		<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+		<script src="{% static 'themes/js/superfish.js' %}"></script>	
+		<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+    </head>
+    {% endblock head %}
+	{% block body %}
+    <body>		
+		{% include "layouts/navinst.html" %}
+		
+		<div id="wrapper" class="container">			
+			<section class="header_text sub">				
+				<div class="row">
+					<div class="span11">					
+						<h4 class="title"><span class="text"><strong>CREER UN COMPTE</strong> </span></h4>
+						<form action="" method="post" >
+                            {% csrf_token %} 
+							<fieldset>
+								<div class="control-group">
+                                    {{form.username.label}}
+									<label class="control-label">{{form.username}} </label>
+								</div>
+								<div class="control-group">
+                                    {{form.email.label}}
+									<label class="control-label">{{form.email}}</label>
+								</div>
+								<div class="control-group">
+                                    {{form.password1.label}}
+									<label class="control-label">{{form.password1}}</label>
+                                </div>
+                                <div class="control-group">
+                                    {{form.password2.label}}
+									<label class="control-label">{{form.password2}}</label>
+								</div>							                            
+								<hr>
+								<div class="actions">
+                                    <input tabindex="9" class="btn btn-inverse large" type="submit" value="CREER UN COMPTE">
+                                </div>
+							</fieldset>
+						</form>					
+					</div>				
+				</div>
+			</section>			
+			<!--<section id="footer-bar">
+				<div class="row">
+					<div class="span3">
+						<h4>Navigation</h4>
+						<ul class="nav">
+							<li><a href="./index.html">Homepage</a></li>  
+							<li><a href="./about.html">About Us</a></li>
+							<li><a href="./contact.html">Contac Us</a></li>
+							<li><a href="./cart.html">Your Cart</a></li>
+							<li><a href="./register.html">Login</a></li>							
+						</ul>					
+					</div>
+					<div class="span4">
+						<h4>My Account</h4>
+						<ul class="nav">
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="#">Newsletter</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+						<br/>
+						<span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+					</div>					
+				</div>	
+			</section>
+			<section id="copyright">
+				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
+            </section> -->
+            {% include "layouts/footer.html" %}
+		</div>
+		{% block js %} 
+		<script src="{% static 'themes/js/common.js' %}"></script>
+		<script>
+			$(document).ready(function() {
+				$('#checkout').click(function (e) {
+					document.location.href = "checkout.html";
+				})
+			});
+        </script>	
+        {% endblock js %} 	
+    </body>
+    {% endblock body %}
+</html>

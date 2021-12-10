@@ -1,0 +1,282 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	{% block head %}
+	<head>
+		<meta charset="utf-8">
+		<title>alpha immobilier | compte</title>
+		<link rel="shortcut icon" href="{% static 'themes/images/panier.jpg' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">      
+		<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		
+		<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+		<script src="{% static 'themes/js/superfish.js' %}"></script>	
+		<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+    </head>
+    {% endblock head %}
+	{% block body %}
+    <body>		
+		{% include "layouts/navdec.html" %}
+		<div id="wrapper" class="container">
+			<section class="header_text sub">
+				<h4><span>BIENVENUE DANS VOTRE ESPACE DE GESTION IMMOBILIER <h3 style="background-color: green; font-weight:bolder; color:rgb(255, 255, 255);margin-left:0%; margin-right:0%;">{{request.user}}</h3></span> </h4>
+			</section>
+			<section class="main-content">				
+				<div class="row">				
+					<div class="span12">
+						<div style="text-align: center;">
+							<h5>CONTACTS ALPHA IMMOBILIER</h5>
+							<p><strong>Telephone:</strong>&nbsp;<a href="tel:+2550758343332"> (+225) 0758343332</a><br>
+							<!--<strong>Fax:</strong>&nbsp;+04 (123) 456-7890<br>-->
+							<strong>Email:</strong>&nbsp;<a href="mailto:alphaimmobilier21@gmail.com">alphaimmobilier21@gmail.com</a>								
+							</p>
+							<br/>
+						</div>
+					</div>
+					<div class="span12">                                                                            
+						<p style="text-align: center;">Si vous souhait que L'Agence ALPHA IMMOBILIER s'occupe de la gestion de vos biens veuillez nous contacter <br>
+						Sinon vous pouvez le faire en mettant vos biens en ligne par le biais du formulaire si dessous</p>
+					    <br>
+						<br>
+					</div>
+					<div class=""> 
+						<form action="{% url 'ajoutimmoPage' %}" method="POST" role="form" enctype="multipart/form-data">
+							{% csrf_token %}
+							<fieldset style="text-align: center;">
+								<div class="row">
+									<div class="span4"> 
+										<div class="form-group col-lg-4">
+											<label for="name"><span>TYPE:</span></label>
+											<div class="input">
+												<select name="commune">
+													<option value="0">--Choisir le Type de Biens--</option>
+														{% for commune in communes %}
+														<option value="{{commune.id}}">
+															{{commune.nom}}
+														</option>
+														{% endfor %}
+												</select>
+											</div>
+										</div>
+
+										<div class="form-group col-lg-4">
+											<label for="name"><span>VILLE:</span></label>
+											<div class="input">
+												<select name="ville">
+													<option value="0">--Choisir la ville--</option>
+														{% for v in villes %}
+														<option value="{{v.id}}">
+															{{v.nom}}
+														</option>
+														{% endfor %}
+												</select>
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>COMMUNE:</span></label>
+											<div class="input">
+												{{form.commune}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>QUARTIER:</span></label>
+											<div class="input">
+												{{form.quartier}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>TELEPHONE:</span></label>
+											<div class="input" aria-required="true">
+												{{form.numero}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>PRIX:</span></label>
+											<div class="input" aria-required="true">
+												{{form.prix}}
+											</div>
+										</div>
+
+
+										
+
+										
+									</div>
+
+									<!-- SPAN 3-->
+
+
+                                    <div class="span4"> 
+										<div class="clearfix">
+											<label for="name"><span>IDENTIFIANT:</span></label>
+											<div class="input" aria-required="true">
+												{{form.slug}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>AGE:</span></label>
+											<div class="input">
+												<select name="age">
+													<option value="0">--Choisir l'age--</option>
+															{% for age in ages %}
+															<option value="{{age.id}}">
+																{{age.nom}}
+															</option>
+															{% endfor %}
+													</select>
+											</div>
+										</div>
+										<div class="clearfix">
+											<label for="name"><span>NOMBRE DE PIECES:</span></label>
+											<div class="input">
+												{{form.pieces}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>NOMBRE DE DOUCHES:</span></label>
+											<div class="input">
+												{{form.douche}}
+											</div>
+										</div>
+										<div class="clearfix">
+											<label for="name"><span>SUPERFICIE:</span></label>
+											<div class="input">
+												{{form.superficie}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>COULEUR EXTERIEUR :</span></label>
+											<div class="input">
+												{{form.couleurExt}}
+											</div>
+										</div>
+
+
+									</div>
+
+									<!-- SPAN 3-->
+
+
+									<div class="span4"> 
+										<div class="clearfix">
+											<label for="name"><span>COULEUR INTERIEUR:</span></label>
+											<div class="input">
+												{{form.couleurInte}}
+											</div>
+										</div>
+										<div class="clearfix">
+											<label for="name"><span>IMAGE1:</span></label>
+											<div class="input" style="max-width: 500;max-height:600;">
+												{{form.image1}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>IMAGE2:</span></label>
+											<div class="input" style="max-width: 500;max-height:600;">
+												{{form.image2}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>IMAGE3:</span></label>
+											<div class="input" style="max-width: 500;max-height:600;">
+												{{form.image3}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>IMAGE4:</span></label>
+											<div class="input" style="max-width: 500;max-height:600;">
+												{{form.image4}}
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<label for="name"><span>IMAGE5:</span></label>
+											<div class="input" style="max-width: 500;max-height:600;">
+												{{form.image5}}
+											</div>
+										</div>
+									</div>
+									
+									<div style="padding-top: 400px; text-align: center;">
+										<button tabindex="3" type="submit" class="btn btn-inverse">Enregister le bien</button>
+									</div>
+							    </div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</section>			
+			<!--<section id="footer-bar">
+				<div class="row">
+					<div class="span3">
+						<h4>Navigation</h4>
+						<ul class="nav">
+							<li><a href="./index.html">Homepage</a></li>  
+							<li><a href="./about.html">About Us</a></li>
+							<li><a href="./contact.html">Contac Us</a></li>
+							<li><a href="./cart.html">Your Cart</a></li>
+							<li><a href="./register.html">Login</a></li>							
+						</ul>					
+					</div>
+					<div class="span4">
+						<h4>My Account</h4>
+						<ul class="nav">
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="#">Newsletter</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+						<br/>
+						<span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+					</div>					
+				</div>	
+			</section>
+			<section id="copyright">
+				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
+            </section> -->
+            {% include "layouts/footer.html" %}
+        </div>
+        {% block js %} 
+		<script src="{% static 'themes/js/common.js' %}"></script>		
+        {% endblock js %} 	
+    </body>
+    {% endblock body %}
+</html>

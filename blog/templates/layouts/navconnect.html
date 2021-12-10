@@ -1,0 +1,20 @@
+{% load static %}
+
+<div id="wrapper" class="container">
+    <section class="navbar main-menu">
+        <div class="navbar-inner main-menu">				
+            <a href="{% url 'index' %}" class="logo pull-left"><img src="{% static 'themes/images/logo.png' %}" class="site_logo" alt=""></a>
+            <nav id="menu" class="pull-right">
+                <ul class="user-menu">	
+                    <li><a href="{% url 'index' %}">Accueil</a></li>			
+                    <li><a href="tel:0758343332">+225 58343332</a></li>
+                    <li><a href="{% url 'registerPage' %}">CREER UN COMPTE</a></li>
+                    <li style="background-color: rgb(168, 0, 0);"><a style="color:white;">La maison des femmes en Côte d'Ivoire</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <section class="header_text sub">
+    {% for pubConnect in pubConnects %}
+        <a href="{{pubConnect.lien}}"><img class="pageBanner" src="{{pubConnect.pub3.url}}" alt="New products" style="max-width: 960; max-height: 200px;"></a>
+    {% endfor %}

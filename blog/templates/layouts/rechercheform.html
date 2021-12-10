@@ -1,0 +1,47 @@
+<div class="span4">
+    <form  method="get" action="{% url 'rechercheform' %}" class="search_form">
+       
+        <input type="text" class="input-block-level search-query" name="query" Placeholder="RECHERCHE : par quartier ou prix..."  style="color: black;">
+        <br><br>
+            <div class="row">
+                <span class="span12">
+                    <ul class="thumbnails listing-products">
+                        <li class="span4">
+                            <select name="ville">
+                                <option value="0">--Trier par Ville--</option>
+                                {% for v in villes %}
+                                <option value="{{v.id}}">
+                                    {{v.nom}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </li>
+                        <li class="span4">
+                            <select name="commune"> 
+                                <option value="0">--Trier par Commune--</option>
+                                {% for com in communes %}
+                                <option value="{{com.id}}">
+                                    {{com.nom}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </li>
+                        <li class="span4">
+                            <select name="age">
+                                <option value="0">--Trier par age--</option>
+                                {% for ag in ages %}
+                                <option value="{{ag.id}}">
+                                    {{ag.nom}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        
+     <button type="submit" name="valider" style="background-color: rgb(168, 0, 0); color:white">Lancer la recherche</button>
+    </form>
+    
+</div>

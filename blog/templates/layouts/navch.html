@@ -1,0 +1,38 @@
+{% load static %}
+		
+<div id="wrapper" class="container">
+    <section class="navbar main-menu">
+        <div class="navbar-inner main-menu">				
+            <a href="{% url 'index' %}" class="logo pull-left"><img src="{% static 'themes/images/logo.png' %}" class="site_logo" alt=""></a>
+            <nav id="menu" class="pull-right">
+                <ul>
+                    <li><a href="#info">A propos de nous</a></li>
+                    <li><a href="{% url 'registerPage' %}">CREER UN COMPTE</a></li>
+                    <li><a href="{% url 'loginPage' %}"> SE CONNECTER</a></li>
+                    <!-- <li><a href="{% url 'ajoutimmoPage' %}">AJOUTER UN PRODUIT</a></li> -->
+                    <li style="background-color: rgb(168, 0, 0);"><a style="color:white;">La maison des femmes en Côte d'Ivoire</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <section  class="homepage-slider" id="home-slider">
+        <div class="flexslider">
+            <ul class="slides">
+                <li>
+                    <img src="{% static 'themes/images/carousel/banner1.jpg' %}" alt="banner1" />
+                </li>
+                <li>
+                    <img src="{% static 'themes/images/carousel/banner1.jpg' %}" alt="banner2" style="max-width: 960; max-height: 200px;"/>
+                    <div class="intro">
+                        <a href="#">
+                            <h1> Ampoule Rouge</h1>
+                            <p><span></span></p>
+                            <p><span></span></p>
+                        </a>
+                    </div>
+                                            
+                </li>
+            </ul>
+        </div>			
+    </section>
+    
